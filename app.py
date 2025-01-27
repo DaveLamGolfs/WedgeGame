@@ -75,30 +75,26 @@ def restart():
 
 
 def calculate_score(original, user):
-    """
-    Calculate the score based on the difference between the original and user yardage.
-    """
     diff = abs(original - user)
     if diff <= 1:  # Perfect or almost perfect
         return 10
-    if diff <= 4:  # Close
+    if diff <= 3:  # Very close (harder score)
         return 9
-    if diff <= 8:  # Fairly close
+    if diff <= 7:  # Close (harder score)
         return 8
-    if diff <= 15:  # Within a decent margin
+    if diff <= 12:  # Fairly close (harder score)
         return 7
-    if diff <= 22:  # Not bad
+    if diff <= 17:  # Within a decent margin
         return 6
-    if diff <= 30:  # Acceptable
+    if diff <= 22:  # Adjusted range for score 5
         return 5
-    if diff <= 40:  # Needs improvement
+    if diff <= 27:  # Adjusted range for score 4
         return 4
-    if diff <= 50:  # A little far off
+    if diff <= 35:  # Needs improvement
         return 3
-    if diff <= 60:  # Quite far
+    if diff <= 45:  # A little far off
         return 2
     return 1  # Way off
-
 
 def feedback_message(score):
     """

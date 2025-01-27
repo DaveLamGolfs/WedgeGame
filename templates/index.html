@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedge Master</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Wedge Master</h1>
+    <h2>Round {{ round }}</h2>
+    <p>Target Yardage: <strong>{{ yardage }}</strong> yards</p>
+
+    <form action="/submit" method="POST">
+        <label for="user_yardage">Enter Your Shot Yardage:</label><br>
+        <input type="number" name="user_yardage" placeholder="Your yardage" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if rounds %}
+    <h3>Round Summary</h3>
+    <ul>
+        {% for r in rounds %}
+        <li>
+            <strong>Target:</strong> {{ r.original_yardage }} yards, 
+            <strong>Your Shot:</strong> {{ r.user_yardage }} yards, 
+            <strong>Score:</strong> {{ r.score }}, 
+            <strong>Feedback:</strong> {{ r.feedback }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <footer>
+        <p>Good luck and enjoy the game!</p>
+    </footer>
+</body>
+</html>

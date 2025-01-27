@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over - Wedge Master</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Game Over!</h1>
+    <p>Total Score: <strong>{{ total_score }}</strong></p>
+
+    <h3>Round Details</h3>
+    <ul>
+        {% for r in rounds %}
+        <li>
+            <strong>Round {{ loop.index }}:</strong> 
+            Target: {{ r.original_yardage }} yards, 
+            Your Shot: {{ r.user_yardage }} yards, 
+            Score: {{ r.score }}, 
+            Feedback: {{ r.feedback }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/restart">Play Again</a>
+
+    <footer>
+        <p>Thanks for playing Wedge Master!</p>
+    </footer>
+</body>
+</html>
